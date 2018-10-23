@@ -29,9 +29,9 @@ public class Bird {
     
     private Plane[] planes;
     
-    private ArrayList<Ball> bombs;
+    private ArrayList<Bomb> bombs;
 
-    public Bird (Background background, Background background2, Ball[] balls, Star[] stars, Castle castle, Plane[] planes, ArrayList<Ball> bombs) {
+    public Bird (Background background, Background background2, Ball[] balls, Star[] stars, Castle castle, Plane[] planes, ArrayList<Bomb> bombs) {
         this.background = background;
         this.background2 = background2;
         this.balls = balls;

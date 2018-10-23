@@ -16,7 +16,7 @@ public class Game {
     public Background background;
     public Background background2;
     public Ball[] balls;
-    public ArrayList<Ball> bombs;
+    public ArrayList<Bomb> bombs;
     public Star[] stars;
     public Plane[] planes;
     
@@ -53,7 +53,7 @@ public class Game {
         
         planes = new Plane[100];
 
-        bombs = new ArrayList<Ball>();
+        bombs = new ArrayList<Bomb>();
 
         this.frame = frame;
         
@@ -108,7 +108,7 @@ public class Game {
                 planes[i].x-=3;
                 int value = rd.nextInt(232);
                 if(value == 1) {
-                    bombs.add(new Ball());
+                    bombs.add(new Bomb());
                     bombs.get(bombs.size() - 1).x = planes[i].x;
                     bombs.get(bombs.size() - 1).y = planes[i].y;
                 }
@@ -116,12 +116,13 @@ public class Game {
             
             for(int i=0; i<bombs.size(); i++) {
                 bombs.get(i).y+=3;
+                if(bird.x >= bombs.get(i).x && bird.x <= bombs.get(i).x + 59 &&
+                        ((bird.y >= bombs.get(i).y && bird.y <= bombs.get(i).y + 80) || 
+                        bombs.get(i).y > 348)) {
+                    gameover = true;
+                }
                 if(bombs.get(i).y > 348) {
                     bombs.remove(bombs.get(i));
-                }
-                if(bird.x >= bombs.get(i).x && bird.x <= bombs.get(i).x + 49 &&
-                        bird.y >= bombs.get(i).y && bird.y <= bombs.get(i).y + 49) {
-                    gameover = true;
                 }
             }
 
